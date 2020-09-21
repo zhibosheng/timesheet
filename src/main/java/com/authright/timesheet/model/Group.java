@@ -1,6 +1,9 @@
 package com.authright.timesheet.model;
 import javax.persistence.*;
 import java.time.OffsetDateTime;
+
+@Entity
+@Table(name = "groups")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
