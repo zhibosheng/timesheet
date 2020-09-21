@@ -11,12 +11,10 @@ public class Timesheet {
     @Column(name = "timesheet_id")
     private long timesheetId;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "contract_id",referencedColumnName = "contract_id")
+
     private Contract contract;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id",referencedColumnName = "user_id")
+
     private User user;
 
     @Column(name = "start_time")
