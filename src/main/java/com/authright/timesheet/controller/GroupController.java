@@ -13,7 +13,7 @@ public class GroupController {
     @Autowired
     private GroupServiceImpl groupService;
 
-    @RequestMapping(value = "/group/{groupId}",method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping("/group/{groupId}")
     public Group getGroupById(@PathVariable(name = "groupId") long groupId){
         return groupService.getGroupById(groupId);
     }

@@ -12,32 +12,32 @@ public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
-    @RequestMapping(value = "/user/{userId}",method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping("/user/{userId}")
     public User getUserById(@PathVariable(name = "userId") long userId){
         return userService.getUserById(userId);
     }
 
-    @RequestMapping(value = "/user/name/{userName}",method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping("/user/name/{userName}")
     public User getUserByName(@PathVariable(name = "userName") String userName){
         return userService.getUserByName(userName);
     }
 
-    @RequestMapping(value = "/user/email/{email}",method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping("/user/email/{email}")
     public User getUserByEmail(@PathVariable(name = "email") String email){
         return userService.getUserByEmail(email);
     }
 
-    @RequestMapping(value = "/user/phone/{phone}",method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping("/user/phone/{phone}")
     public User getUserByPhone(@PathVariable(name = "phone") String phone){
         return userService.getUserByPhone(phone);
     }
 
-    @RequestMapping(value = "/user",method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping("/user")
     public User save(@RequestBody User user){
         return userService.save(user);
     }
 
-    @RequestMapping(value = "/user",method = RequestMethod.PUT, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @PutMapping("/user")
     public User update(@RequestBody User user){
         return userService.update(user);
     }
