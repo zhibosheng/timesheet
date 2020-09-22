@@ -1,7 +1,7 @@
 package com.authright.timesheet.controller;
 
 import com.authright.timesheet.model.User;
-import com.authright.timesheet.service.UserService;
+import com.authright.timesheet.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController {
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @RequestMapping(value = "/user/{userId}",method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public User getUserById(@PathVariable(name = "userId") long userId){
