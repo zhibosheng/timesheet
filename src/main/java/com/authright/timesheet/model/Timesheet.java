@@ -17,24 +17,12 @@ public class Timesheet {
 
     private User user;
 
-    @Column(name = "start_time")
+
     private OffsetDateTime startTime;
-
-    @Column(name = "end_time")
     private OffsetDateTime endTime;
-
-    @Column(name = "break_deduction")
     private OffsetDateTime breakDeduction;
-
-    @Column(name = "total_hour")
     private OffsetDateTime totalHour;
-
-    @Column(name = "status")
     private String status;
-
-    @Column(name = "create_time")
     private OffsetDateTime createTime;
-
-    @Column(name = "update_time")
     private OffsetDateTime updateTime;
 }
