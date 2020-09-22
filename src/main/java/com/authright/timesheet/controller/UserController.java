@@ -12,6 +12,16 @@ public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
+    @PostMapping("/user")
+    public User save(@RequestBody User user){
+        return userService.save(user);
+    }
+
+    @PutMapping("/user")
+    public User update(@RequestBody User user){
+        return userService.update(user);
+    }
+
     @GetMapping("/user/{userId}")
     public User getUserById(@PathVariable(name = "userId") long userId){
         return userService.getUserById(userId);
@@ -32,13 +42,4 @@ public class UserController {
         return userService.getUserByPhone(phone);
     }
 
-    @PostMapping("/user")
-    public User save(@RequestBody User user){
-        return userService.save(user);
-    }
-
-    @PutMapping("/user")
-    public User update(@RequestBody User user){
-        return userService.update(user);
-    }
 }
