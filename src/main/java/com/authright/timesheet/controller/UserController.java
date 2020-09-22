@@ -23,23 +23,23 @@ public class UserController {
     }
 
     @GetMapping("/user/{userId}")
-    public User getUserById(@PathVariable(name = "userId") long userId){
-        return userService.getUserById(userId);
+    public User findUserById(@PathVariable(name = "userId") long userId){
+        return userService.findUserById(userId);
     }
 
     @GetMapping("/user/name/{userName}")
-    public User getUserByName(@PathVariable(name = "userName") String userName){
-        return userService.getUserByName(userName);
+    public User findUserByName(@PathVariable(name = "userName") String userName){
+        return userService.findUserByName(userName);
     }
 
     @GetMapping("/user/email/{email}")
-    public User getUserByEmail(@PathVariable(name = "email") String email){
-        return userService.getUserByEmail(email);
+    public User findUserByEmail(@PathVariable(name = "email") String email){
+        return userService.findUserByEmail(email);
     }
 
     @GetMapping("/user/phone/{phone}")
-    public User getUserByPhone(@PathVariable(name = "phone") String phone){
-        return userService.getUserByPhone(phone);
+    public User findUserByPhone(@PathVariable(name = "phone") String phone){
+        return userService.findUserByPhone(phone);
     }
 
 }

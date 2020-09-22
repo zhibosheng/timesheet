@@ -5,8 +5,8 @@ import com.authright.timesheet.model.User;
 public interface UserService {
     User save(User user);
     User update(User user);
-    User getUserById(long userId);
-    User getUserByName(String userName);
-    User getUserByEmail(String email);
-    User getUserByPhone(String phone);
+    User findUserById(long userId);
+    User findUserByName(String userName);
+    User findUserByEmail(String email);
+    User findUserByPhone(String phone);
 }

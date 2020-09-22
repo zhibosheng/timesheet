@@ -1,29 +1,28 @@
 package com.authright.timesheet.service;
 
 import com.authright.timesheet.model.Group;
-import com.authright.timesheet.repository.GroupDao;
-import com.authright.timesheet.repository.UserDao;
+import com.authright.timesheet.repository.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GroupServiceImpl implements GroupService{
     @Autowired
-    private GroupDao groupDao;
+    private GroupRepository groupRepository;
 
     public Group save(Group group){
-        return groupDao.save(group);
+        return groupRepository.save(group);
     }
 
     public Group update(Group group){
-        return groupDao.update(group);
+        return groupRepository.save(group);
     }
 
-    public Group getGroupById(long groupId){
-        return groupDao.getGroupById(groupId);
+    public Group findGroupById(long groupId){
+        return groupRepository.findById(groupId).get();
     }
 
-    public Group getGroupByName(String groupName){
-        return groupDao.getGroupByName(groupName);
+    public Group findGroupByName(String groupName){
+        return groupRepository.findGroupByName(groupName).get();
     }
 }

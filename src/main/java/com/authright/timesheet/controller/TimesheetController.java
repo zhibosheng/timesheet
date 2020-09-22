@@ -24,8 +24,8 @@ public class TimesheetController {
     }
 
     @GetMapping("/timesheet/{timesheetId}")
-    public Timesheet getTimesheetById(@PathVariable(name = "timesheetId") long timesheetId){
-        return timesheetService.getTimesheetById(timesheetId);
+    public Timesheet findTimesheetById(@PathVariable(name = "timesheetId") long timesheetId){
+        return timesheetService.findTimesheetById(timesheetId);
     }
 
 }

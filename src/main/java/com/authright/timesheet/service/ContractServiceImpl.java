@@ -1,28 +1,28 @@
 package com.authright.timesheet.service;
 
 import com.authright.timesheet.model.Contract;
-import com.authright.timesheet.repository.ContractDao;
+import com.authright.timesheet.repository.ContractRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ContractServiceImpl implements ContractService{
     @Autowired
-    private ContractDao contractDao;
+    private ContractRepository contractRepository;
 
     public Contract save(Contract contract){
-        return contractDao.save(contract);
+        return contractRepository.save(contract);
     }
 
     public Contract update(Contract contract){
-        return contractDao.update(contract);
+        return contractRepository.save(contract);
     }
 
-    public Contract getContractById(long contractId){
-        return contractDao.getContractById(contractId);
+    public Contract findContractById(long contractId){
+        return contractRepository.findById(contractId).get();
     }
 
-    public Contract getContractByName(String contractName){
-        return contractDao.getContractByName(contractName);
+    public Contract findContractByName(String contractName){
+        return contractRepository.findContractByName(contractName).get();
     }
 }

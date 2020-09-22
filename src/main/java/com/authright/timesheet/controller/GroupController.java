@@ -26,13 +26,13 @@ public class GroupController {
     }
 
     @GetMapping("/group/{groupId}")
-    public Group getGroupById(@PathVariable(name = "groupId") long groupId){
-        return groupService.getGroupById(groupId);
+    public Group findGroupById(@PathVariable(name = "groupId") long groupId){
+        return groupService.findGroupById(groupId);
     }
 
     @GetMapping("/group/name/{groupName}")
-    public Group getGroupByName(@PathVariable(name = "groupName") String groupName){
-        return groupService.getGroupByName(groupName);
+    public Group findGroupByName(@PathVariable(name = "groupName") String groupName){
+        return groupService.findGroupByName(groupName);
     }
 
 }
