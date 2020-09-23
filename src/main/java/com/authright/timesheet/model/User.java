@@ -1,8 +1,12 @@
 package com.authright.timesheet.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -19,6 +23,18 @@ public class User {
     private String avatarUrl;
     private OffsetDateTime createTime;
     private OffsetDateTime updateTime;
+
+    @OneToMany(mappedBy = "manager" )
+    @JsonIgnore
+    private List<Group> myManageGroups = new ArrayList<>();
+
+    @OneToMany(mappedBy = "manager" )
+    @JsonIgnore
+    private List<Contract> myManageContracts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user" )
+    @JsonIgnore
+    private List<Timesheet> myTimesheets = new ArrayList<>();
 
     public User(String userName, String firstName, String lastName, String password, String email, String phone, String avatarUrl, OffsetDateTime createTime, OffsetDateTime updateTime) {
         this.userName = userName;

@@ -1,5 +1,7 @@
 package com.authright.timesheet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.OffsetDateTime;
 
@@ -8,13 +10,14 @@ import java.time.OffsetDateTime;
 public class Timesheet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "timesheet_id")
     private long timesheetId;
 
-
+    @ManyToOne
+    @JsonIgnore
     private Contract contract;
 
-
+    @ManyToOne
+    @JsonIgnore
     private User user;
 
 

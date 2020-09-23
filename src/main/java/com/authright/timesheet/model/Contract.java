@@ -1,7 +1,11 @@
 package com.authright.timesheet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "contracts")
@@ -10,7 +14,8 @@ public class Contract {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long contractId;
 
-
+    @ManyToOne
+    @JsonIgnore
     private User manager;
 
 
@@ -20,6 +25,10 @@ public class Contract {
     private OffsetDateTime endDate;
     private OffsetDateTime createTime;
     private OffsetDateTime updateTime;
+
+    @OneToMany(mappedBy = "contract" )
+    @JsonIgnore
+    private List<Timesheet> contractTimesheets = new ArrayList<>();
 
     public Contract(User manager, String contractName, String company, OffsetDateTime startDate, OffsetDateTime endDate, OffsetDateTime createTime, OffsetDateTime updateTime) {
         this.manager = manager;

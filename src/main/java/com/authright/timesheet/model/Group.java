@@ -1,4 +1,6 @@
 package com.authright.timesheet.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.time.OffsetDateTime;
 
@@ -11,8 +13,8 @@ public class Group {
     private String groupName;
     private String groupDescription;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "manager_id")
+    @ManyToOne
+    @JsonIgnore
     private User manager;
 
     private OffsetDateTime createTime;
