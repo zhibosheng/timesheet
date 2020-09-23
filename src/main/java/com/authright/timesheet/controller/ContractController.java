@@ -23,12 +23,12 @@ public class ContractController {
     }
 
     @GetMapping("/contract/{contractId}")
-    public Contract getContractById(@PathVariable(name = "contractId") long contractId){
+    public Contract findContractById(@PathVariable(name = "contractId") long contractId){
         return contractService.findContractById(contractId);
     }
 
     @GetMapping("/contract/name/{contractName}")
-    public Contract getContractByName(@PathVariable(name = "contractName") String contractName){
+    public Contract findContractByName(@PathVariable(name = "contractName") String contractName){
         return contractService.findContractByName(contractName);
     }
 }
