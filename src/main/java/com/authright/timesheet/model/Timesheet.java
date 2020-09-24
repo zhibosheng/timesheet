@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.Duration;
 import java.time.OffsetDateTime;
 
 @Entity
@@ -24,8 +25,8 @@ public class Timesheet {
 
     private OffsetDateTime startTime;
     private OffsetDateTime endTime;
-    private OffsetDateTime breakDeduction;
-    private OffsetDateTime totalHour;
+    private Duration breakDeduction;
+    private Duration totalHour;
     private String status;
     private OffsetDateTime createTime;
     private OffsetDateTime updateTime;
