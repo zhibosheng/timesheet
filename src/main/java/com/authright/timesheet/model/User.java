@@ -2,6 +2,7 @@ package com.authright.timesheet.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
+@Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,105 +28,21 @@ public class User {
 
     @OneToMany(mappedBy = "manager" )
     @JsonIgnore
-    private List<Group> myManageGroups = new ArrayList<>();
+    private List<Group> manageGroups = new ArrayList<>();
 
     @OneToMany(mappedBy = "manager" )
     @JsonIgnore
-    private List<Contract> myManageContracts = new ArrayList<>();
+    private List<Contract> manageContracts = new ArrayList<>();
 
     @OneToMany(mappedBy = "user" )
     @JsonIgnore
     private List<Timesheet> myTimesheets = new ArrayList<>();
 
-    public User(String userName, String firstName, String lastName, String password, String email, String phone, String avatarUrl, OffsetDateTime createTime, OffsetDateTime updateTime) {
-        this.userName = userName;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.email = email;
-        this.phone = phone;
-        this.avatarUrl = avatarUrl;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-    }
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(name = "users_groups",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "group_id")})
+    private List<Group> joinGroups = new ArrayList<>();
 
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAvatarUrl() {
-        return avatarUrl;
-    }
-
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
-    }
-
-    public OffsetDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(OffsetDateTime createTime) {
-        this.createTime = createTime;
-    }
-
-    public OffsetDateTime getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(OffsetDateTime updateTime) {
-        this.updateTime = updateTime;
-    }
 }

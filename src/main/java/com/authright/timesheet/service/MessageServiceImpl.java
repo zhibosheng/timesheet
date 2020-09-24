@@ -34,7 +34,7 @@ public class MessageServiceImpl implements MessageService{
     static final String TEXTBODY = "This email was sent through Amazon SES "
             + "using the AWS SDK for Java.";
 
-    public void sendEmail(String TO, String SUBJECT, String HTMLBODY, String TEXTBODY) throws IOException {
+    public void sendEmail(String TO, String SUBJECT, String HTMLBODY, String TEXTBODY){
 
         try {
             AmazonSimpleEmailService client =
