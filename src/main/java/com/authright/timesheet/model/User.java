@@ -45,4 +45,18 @@ public class User {
             inverseJoinColumns = { @JoinColumn(name = "group_id")})
     private List<Group> joinGroups = new ArrayList<>();
 
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(name = "users_roles",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "role_id")})
+    private List<Group> roles = new ArrayList<>();
+
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(name = "users_contracts",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "contract_id")})
+    private List<Group> contracts = new ArrayList<>();
+
 }

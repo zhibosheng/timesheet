@@ -1,8 +1,11 @@
 package com.authright.timesheet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "roles")
@@ -12,4 +15,8 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long roleId;
     private String operation;
+
+    @ManyToMany(mappedBy = "roles")
+    @JsonIgnore
+    private List<User> users = new ArrayList<>();
 }

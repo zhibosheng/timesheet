@@ -32,4 +32,7 @@ public class Contract {
     @JsonIgnore
     private List<Timesheet> contractTimesheets = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "contracts")
+    @JsonIgnore
+    private List<User> users = new ArrayList<>();
 }
