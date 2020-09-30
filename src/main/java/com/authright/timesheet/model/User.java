@@ -26,37 +26,37 @@ public class User {
     private OffsetDateTime createTime;
     private OffsetDateTime updateTime;
 
-    @OneToMany(mappedBy = "manager" )
+    @OneToMany(mappedBy = "manager")
     @JsonIgnore
     private List<Group> manageGroups = new ArrayList<>();
 
-    @OneToMany(mappedBy = "manager" )
+    @OneToMany(mappedBy = "manager")
     @JsonIgnore
     private List<Contract> manageContracts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user" )
+    @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<Timesheet> myTimesheets = new ArrayList<>();
 
     @ManyToMany
     @JsonIgnore
     @JoinTable(name = "users_groups",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "group_id")})
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "group_id")})
     private List<Group> joinGroups = new ArrayList<>();
 
     @ManyToMany
     @JsonIgnore
     @JoinTable(name = "users_roles",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "role_id")})
-    private List<Group> roles = new ArrayList<>();
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    private List<Role> roles = new ArrayList<>();
 
     @ManyToMany
     @JsonIgnore
     @JoinTable(name = "users_contracts",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "contract_id")})
-    private List<Group> contracts = new ArrayList<>();
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "contract_id")})
+    private List<Contract> contracts = new ArrayList<>();
 
 }

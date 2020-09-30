@@ -18,9 +18,9 @@ public class RoleServiceTest {
     @Autowired
     private RoleService roleService;
 
-//    @Test
-//    public void findUsers(){
-//        List<User> users = roleService.findUsers(2);
-//        Assert.assertEquals(users.size(), 1);
-//    }
+    @Test
+    public void findUsers(){
+        List<User> users = roleService.findUsers(2);
+        Assert.assertEquals(users.size(), 1);
+    }
 }

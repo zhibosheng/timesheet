@@ -7,14 +7,24 @@ import java.util.Set;
 
 public interface UserService {
     User save(User user);
+
     User update(User user);
+
     User findUserById(long userId);
+
     User findUserByName(String userName);
+
     User findUserByEmail(String email);
+
     User findUserByPhone(String phone);
+
     List<Group> findManageGroups(long userId);
+
     List<Timesheet> findMyTimesheets(long userId);
+
     List<Group> findJoinGroups(long userId);
+
     List<Role> findRoles(long userId);
+
     List<Contract> findContracts(long userId);
 }

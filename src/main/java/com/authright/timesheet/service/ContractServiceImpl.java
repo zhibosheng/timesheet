@@ -9,23 +9,23 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ContractServiceImpl implements ContractService{
+public class ContractServiceImpl implements ContractService {
     @Autowired
     private ContractRepository contractRepository;
 
-    public Contract save(Contract contract){
+    public Contract save(Contract contract) {
         return contractRepository.save(contract);
     }
 
-    public Contract update(Contract contract){
+    public Contract update(Contract contract) {
         return contractRepository.save(contract);
     }
 
-    public Contract findContractById(long contractId){
+    public Contract findContractById(long contractId) {
         return contractRepository.findById(contractId).get();
     }
 
-    public Contract findContractByName(String contractName){
+    public Contract findContractByName(String contractName) {
         return contractRepository.findContractByName(contractName).get();
     }
 

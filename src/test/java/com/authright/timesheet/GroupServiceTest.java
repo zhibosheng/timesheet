@@ -22,19 +22,19 @@ public class GroupServiceTest {
     private GroupService groupService;
 
     @Test
-    public void findGroupById(){
+    public void findGroupById() {
         Group group = groupService.findGroupById(1);
-        Assert.assertEquals(group.getGroupId(),1);
+        Assert.assertEquals(group.getGroupId(), 1);
     }
 
     @Test
-    public void findGroupByName(){
+    public void findGroupByName() {
         Group group = groupService.findGroupByName("Full Stack Training Team");
-        Assert.assertEquals(group.getGroupId(),1);
+        Assert.assertEquals(group.getGroupId(), 1);
     }
 
     @Test
-    public void findUsers(){
+    public void findUsers() {
         List<User> users = groupService.findUsers(1);
         Assert.assertEquals(users.size(), 2);
     }

@@ -8,8 +8,12 @@ import java.util.Set;
 
 public interface GroupService {
     Group save(Group group);
+
     Group update(Group group);
+
     Group findGroupById(long groupId);
+
     Group findGroupByName(String groupName);
+
     List<User> findUsers(long groupId);
 }

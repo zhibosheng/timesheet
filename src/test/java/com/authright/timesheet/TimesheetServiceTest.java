@@ -16,8 +16,8 @@ public class TimesheetServiceTest {
     private TimesheetService timesheetService;
 
     @Test
-    public void findTimesheetById(){
+    public void findTimesheetById() {
         Timesheet timesheet = timesheetService.findTimesheetById(1);
-        Assert.assertEquals(timesheet.getTimesheetId(),1);
+        Assert.assertEquals(timesheet.getTimesheetId(), 1);
     }
 }

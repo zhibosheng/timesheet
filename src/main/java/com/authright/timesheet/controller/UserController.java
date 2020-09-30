@@ -15,57 +15,57 @@ public class UserController {
     private UserServiceImpl userService;
 
     @PostMapping("/user")
-    public User save(@RequestBody User user){
+    public User save(@RequestBody User user) {
         return userService.save(user);
     }
 
     @PutMapping("/user")
-    public User update(@RequestBody User user){
+    public User update(@RequestBody User user) {
         return userService.update(user);
     }
 
     @GetMapping("/user/{userId}")
-    public User findUserById(@PathVariable(name = "userId") long userId){
+    public User findUserById(@PathVariable(name = "userId") long userId) {
         return userService.findUserById(userId);
     }
 
     @GetMapping("/user/name/{userName}")
-    public User findUserByName(@PathVariable(name = "userName") String userName){
+    public User findUserByName(@PathVariable(name = "userName") String userName) {
         return userService.findUserByName(userName);
     }
 
     @GetMapping("/user/email/{email}")
-    public User findUserByEmail(@PathVariable(name = "email") String email){
+    public User findUserByEmail(@PathVariable(name = "email") String email) {
         return userService.findUserByEmail(email);
     }
 
     @GetMapping("/user/phone/{phone}")
-    public User findUserByPhone(@PathVariable(name = "phone") String phone){
+    public User findUserByPhone(@PathVariable(name = "phone") String phone) {
         return userService.findUserByPhone(phone);
     }
 
     @GetMapping("/user/myTimesheet/{userId}")
-    public List<Timesheet> findMyTimesheets(@PathVariable(name = "userId") long userId){
+    public List<Timesheet> findMyTimesheets(@PathVariable(name = "userId") long userId) {
         return userService.findMyTimesheets(userId);
     }
 
     @GetMapping("/user/manageGroups/{userId}")
-    public List<Group> findMangeGroups(@PathVariable(name = "userId") long userId){
+    public List<Group> findMangeGroups(@PathVariable(name = "userId") long userId) {
         return userService.findManageGroups(userId);
     }
 
     @GetMapping("/user/joinGroups/{userId}")
-    public List<Group> findJoinGroups(@PathVariable(name = "userId") long userId){
+    public List<Group> findJoinGroups(@PathVariable(name = "userId") long userId) {
         return userService.findJoinGroups(userId);
     }
 
     @GetMapping("/user/findRoles/{userId}")
-    public List<Role> findRoles(@PathVariable(name = "userId") long userId){
+    public List<Role> findRoles(@PathVariable(name = "userId") long userId) {
         return userService.findRoles(userId);
     }
 
     @GetMapping("/user/findContracts/{userId}")
-    public List<Contract> findContracts(@PathVariable(name = "userId") long userId){
+    public List<Contract> findContracts(@PathVariable(name = "userId") long userId) {
         return userService.findContracts(userId);
     }
 }
