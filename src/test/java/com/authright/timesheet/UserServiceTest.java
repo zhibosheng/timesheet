@@ -1,9 +1,6 @@
 package com.authright.timesheet;
 
-import com.authright.timesheet.model.Contract;
-import com.authright.timesheet.model.Group;
-import com.authright.timesheet.model.Role;
-import com.authright.timesheet.model.User;
+import com.authright.timesheet.model.*;
 import com.authright.timesheet.service.UserService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TimesheetApplication.class)
@@ -43,6 +41,19 @@ public class UserServiceTest {
         User user = userService.findUserByPhone("6175951256");
         Assert.assertEquals(user.getUserId(), 1);
     }
+
+    @Test
+    public void findManageGroups(){
+        List<Group> manageGroups = userService.findManageGroups(6);
+        Assert.assertEquals(manageGroups.size(), 1);
+    }
+
+    @Test
+    public void findMyTimesheets(){
+        List<Timesheet> myTimesheets = userService.findMyTimesheets(1);
+        Assert.assertEquals(myTimesheets.size(), 28);
+    }
+
     @Test
     public void findJoinGroups(){
         List<Group> joinGroups = userService.findJoinGroups(1);

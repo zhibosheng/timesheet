@@ -1,11 +1,9 @@
 package com.authright.timesheet.service;
 
-import com.authright.timesheet.model.Contract;
-import com.authright.timesheet.model.Group;
-import com.authright.timesheet.model.Role;
-import com.authright.timesheet.model.User;
+import com.authright.timesheet.model.*;
 
 import java.util.List;
+import java.util.Set;
 
 public interface UserService {
     User save(User user);
@@ -14,6 +12,8 @@ public interface UserService {
     User findUserByName(String userName);
     User findUserByEmail(String email);
     User findUserByPhone(String phone);
+    List<Group> findManageGroups(long userId);
+    List<Timesheet> findMyTimesheets(long userId);
     List<Group> findJoinGroups(long userId);
     List<Role> findRoles(long userId);
     List<Contract> findContracts(long userId);
