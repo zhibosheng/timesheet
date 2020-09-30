@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class GroupController {
     @Autowired
@@ -34,5 +36,11 @@ public class GroupController {
     public Group findGroupByName(@PathVariable(name = "groupName") String groupName){
         return groupService.findGroupByName(groupName);
     }
+
+    @GetMapping("/group/users/{groupId}}")
+    public List<User> findUsers(@PathVariable(name = "groupId") long groupId){
+        return groupService.findUsers(groupId);
+    }
+
 
 }

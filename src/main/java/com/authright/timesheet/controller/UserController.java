@@ -1,10 +1,12 @@
 package com.authright.timesheet.controller;
 
-import com.authright.timesheet.model.User;
+import com.authright.timesheet.model.*;
 import com.authright.timesheet.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -42,4 +44,28 @@ public class UserController {
         return userService.findUserByPhone(phone);
     }
 
+    @GetMapping("/user/myTimesheet/{userId}")
+    public List<Timesheet> findMyTimesheets(@PathVariable(name = "userId") long userId){
+        return userService.findMyTimesheets(userId);
+    }
+
+    @GetMapping("/user/manageGroups/{userId}")
+    public List<Group> findMangeGroups(@PathVariable(name = "userId") long userId){
+        return userService.findManageGroups(userId);
+    }
+
+    @GetMapping("/user/joinGroups/{userId}")
+    public List<Group> findJoinGroups(@PathVariable(name = "userId") long userId){
+        return userService.findJoinGroups(userId);
+    }
+
+    @GetMapping("/user/findRoles/{userId}")
+    public List<Role> findRoles(@PathVariable(name = "userId") long userId){
+        return userService.findRoles(userId);
+    }
+
+    @GetMapping("/user/findContracts/{userId}")
+    public List<Contract> findContracts(@PathVariable(name = "userId") long userId){
+        return userService.findContracts(userId);
+    }
 }

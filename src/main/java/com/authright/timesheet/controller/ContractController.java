@@ -2,9 +2,12 @@ package com.authright.timesheet.controller;
 
 import com.authright.timesheet.model.Contract;
 
+import com.authright.timesheet.model.Timesheet;
 import com.authright.timesheet.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class ContractController {
@@ -30,5 +33,10 @@ public class ContractController {
     @GetMapping("/contract/name/{contractName}")
     public Contract findContractByName(@PathVariable(name = "contractName") String contractName){
         return contractService.findContractByName(contractName);
+    }
+
+    @GetMapping("/contract/contractTimesheets/{contractId}")
+    public List<Timesheet> findContractTimesheets(@PathVariable(name = "contractId") long contractId){
+        return contractService.findContractTimesheets(contractId);
     }
 }
