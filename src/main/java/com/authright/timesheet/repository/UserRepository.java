@@ -1,11 +1,15 @@
 package com.authright.timesheet.repository;
 
+import com.authright.timesheet.model.Contract;
+import com.authright.timesheet.model.Group;
+import com.authright.timesheet.model.Role;
 import com.authright.timesheet.model.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 @Repository
 public interface UserRepository extends CrudRepository<User,Long> {
@@ -15,4 +19,12 @@ public interface UserRepository extends CrudRepository<User,Long> {
     Optional<User> findUserByEmail(@Param("email") String email);
     @Query("SELECT u FROM User u WHERE u.phone=:phone")
     Optional<User> findUserByPhone(@Param("phone") String phone);
+
+
+    @Query("SELECT g FROM Group as g left join fetch g.users as u WHERE u.userId = :userId")
+    List<Group> findJoinGroups(@Param("userId") long userId);
+    @Query("SELECT r FROM Role as r left join fetch r.users as u WHERE u.userId = :userId")
+    List<Role> findRoles(@Param("userId") long userId);
+    @Query("SELECT c FROM Contract as c left join fetch c.users as u WHERE u.userId = :userId")
+    List<Contract> findContracts(@Param("userId") long userId);
 }

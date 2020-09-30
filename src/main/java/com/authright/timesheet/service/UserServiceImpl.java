@@ -1,9 +1,14 @@
 package com.authright.timesheet.service;
 
+import com.authright.timesheet.model.Contract;
+import com.authright.timesheet.model.Group;
+import com.authright.timesheet.model.Role;
 import com.authright.timesheet.model.User;
 import com.authright.timesheet.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -32,6 +37,16 @@ public class UserServiceImpl implements UserService{
 
     public User findUserByPhone(String phone){
         return userRepository.findUserByPhone(phone).get();
+    }
+
+    public List<Group> findJoinGroups(long userId) {
+        return userRepository.findJoinGroups(userId);
+    }
+    public List<Role> findRoles(long userId) {
+        return userRepository.findRoles(userId);
+    }
+    public List<Contract> findContracts(long userId) {
+        return userRepository.findContracts(userId);
     }
 
 }
