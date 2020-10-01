@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.ZoneOffset;
+import java.util.Date;
 import java.util.List;
 
 
@@ -49,6 +51,12 @@ public class UserController {
         return userService.findMyTimesheets(userId);
     }
 
+    @GetMapping("/user/myTimesheet/{userId}/{startDate}/endDate")
+    public List<Timesheet> findTimesheetsByDate(@PathVariable(name = "userId") long userId, @PathVariable(name = "startDate") Date startDate, @PathVariable(name = "endDate") Date endDate) {
+        return userService.findTimesheetByDate(userId, startDate.toInstant().atOffset(ZoneOffset.UTC),  endDate.toInstant().atOffset(ZoneOffset.UTC));
+    }
+
+
     @GetMapping("/user/manageGroups/{userId}")
     public List<Group> findMangeGroups(@PathVariable(name = "userId") long userId) {
         return userService.findManageGroups(userId);
@@ -68,4 +76,6 @@ public class UserController {
     public List<Contract> findContracts(@PathVariable(name = "userId") long userId) {
         return userService.findContracts(userId);
     }
+
+
 }

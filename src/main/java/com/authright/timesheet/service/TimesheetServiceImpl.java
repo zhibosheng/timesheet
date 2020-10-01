@@ -5,6 +5,11 @@ import com.authright.timesheet.repository.TimesheetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import java.time.OffsetDateTime;
+import java.util.Date;
+import java.util.List;
+
 @Service
 public class TimesheetServiceImpl implements TimesheetService {
 
@@ -22,4 +27,8 @@ public class TimesheetServiceImpl implements TimesheetService {
     public Timesheet findTimesheetById(long timesheetId) {
         return timesheetRepository.findById(timesheetId).get();
     }
+
+    public List<Timesheet> findTimesheetByDate(OffsetDateTime startDate, OffsetDateTime endDate){
+        return timesheetRepository.findTimesheetByDate(startDate,endDate);
+    };
 }

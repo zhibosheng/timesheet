@@ -8,6 +8,8 @@ import com.authright.timesheet.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.ZoneOffset;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -39,6 +41,11 @@ public class ContractController {
     @GetMapping("/contract/contractTimesheets/{contractId}")
     public List<Timesheet> findContractTimesheets(@PathVariable(name = "contractId") long contractId) {
         return contractService.findContractTimesheets(contractId);
+    }
+
+    @GetMapping("/contract/contractTimesheets/{contractId}/{startDate}/{endDate}")
+    public List<Timesheet> findTimesheetsByDate(@PathVariable(name = "contractId") long contractId, @PathVariable(name = "startDate") Date startDate, @PathVariable(name = "endDate") Date endDate) {
+        return contractService.findTimesheetByDate(contractId, startDate.toInstant().atOffset(ZoneOffset.UTC),  endDate.toInstant().atOffset(ZoneOffset.UTC));
     }
 
     @GetMapping("/contract/users/{contractId}}")

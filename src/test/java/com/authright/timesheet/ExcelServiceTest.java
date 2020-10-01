@@ -1,6 +1,7 @@
 package com.authright.timesheet;
 
 import com.authright.timesheet.model.Timesheet;
+import com.authright.timesheet.service.ExcelService;
 import com.authright.timesheet.service.TimesheetService;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,29 +10,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
-import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TimesheetApplication.class)
-public class TimesheetServiceTest {
+public class ExcelServiceTest {
+    @Autowired
+    private ExcelService excelService;
+
     @Autowired
     private TimesheetService timesheetService;
 
     @Test
-    public void findTimesheetById() {
-        Timesheet timesheet = timesheetService.findTimesheetById(1);
-        Assert.assertEquals(timesheet.getTimesheetId(), 1);
-    }
-
-    @Test
-    public void findTimesheetByDate(){
-        List<Timesheet> timesheets = timesheetService.findTimesheetByDate(OffsetDateTime.of(LocalDateTime.of(2020,8,10,0,0,0),ZoneOffset.ofHoursMinutes(0,0)),
+    public void generateExcel(){
+        List<Timesheet> timesheets = timesheetService.findTimesheetByDate(OffsetDateTime.of(LocalDateTime.of(2020,8,10,0,0,0), ZoneOffset.ofHoursMinutes(0,0)),
                 OffsetDateTime.of(LocalDateTime.of(2020,8,31,0,0,0),ZoneOffset.ofHoursMinutes(0,0)));
-        Assert.assertEquals(timesheets.size(), 28);
+        boolean flag = excelService.generateExcel(timesheets);
+        Assert.assertEquals(flag, true);
     }
 }

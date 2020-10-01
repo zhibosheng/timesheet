@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -35,4 +36,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     @Query("SELECT c FROM Contract as c left join fetch c.users as u WHERE u.userId = :userId")
     List<Contract> findContracts(@Param("userId") long userId);
+
+    @Query("SELECT t FROM Timesheet as t left join fetch t.user as u WHERE u.userId = :userId and t.timesheetDate BETWEEN :startDate AND :endDate")
+    List<Timesheet> findTimesheetByDate(@Param("userId") long userId,@Param("startDate") OffsetDateTime startDate, @Param("endDate")OffsetDateTime endDate);
 }

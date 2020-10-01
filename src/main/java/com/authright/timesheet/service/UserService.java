@@ -2,6 +2,7 @@ package com.authright.timesheet.service;
 
 import com.authright.timesheet.model.*;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -27,4 +28,6 @@ public interface UserService {
     List<Role> findRoles(long userId);
 
     List<Contract> findContracts(long userId);
+
+    List<Timesheet> findTimesheetByDate(long userId, OffsetDateTime startDate, OffsetDateTime endDate);
 }

@@ -5,6 +5,7 @@ import com.authright.timesheet.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -57,4 +58,7 @@ public class UserServiceImpl implements UserService{
         return userRepository.findContracts(userId);
     }
 
+    public List<Timesheet> findTimesheetByDate(long userId, OffsetDateTime startDate, OffsetDateTime endDate){
+        return userRepository.findTimesheetByDate(userId, startDate,endDate);
+    };
 }

@@ -26,6 +26,7 @@ public class Timesheet {
     @JoinColumn(name = "user_id")
     private User user;
 
+    private OffsetDateTime timesheetDate;
     private OffsetDateTime startTime;
     private OffsetDateTime endTime;
     private LocalTime breakDeduction;

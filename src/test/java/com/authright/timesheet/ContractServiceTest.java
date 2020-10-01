@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -43,5 +46,12 @@ public class ContractServiceTest {
     public void findUsers(){
         List<User> users = contractService.findUsers(1);
         Assert.assertEquals(users.size(), 2);
+    }
+
+    @Test
+    public void findTimesheetByDate(){
+        List<Timesheet> timesheets = contractService.findTimesheetByDate(1, OffsetDateTime.of(LocalDateTime.of(2020,8,10,0,0,0), ZoneOffset.ofHoursMinutes(0,0)),
+                OffsetDateTime.of(LocalDateTime.of(2020,8,31,0,0,0),ZoneOffset.ofHoursMinutes(0,0)));
+        Assert.assertEquals(timesheets.size(), 28);
     }
 }

@@ -7,6 +7,10 @@ import com.authright.timesheet.service.TimesheetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.ZoneOffset;
+import java.util.Date;
+import java.util.List;
+
 @RestController
 public class TimesheetController {
 
@@ -26,6 +30,11 @@ public class TimesheetController {
     @GetMapping("/timesheet/{timesheetId}")
     public Timesheet findTimesheetById(@PathVariable(name = "timesheetId") long timesheetId) {
         return timesheetService.findTimesheetById(timesheetId);
+    }
+
+    @GetMapping("/timesheet/{startDate}/{endDate}")
+    public List<Timesheet> findTimesheetByDate(@PathVariable(name = "startDate") Date startDate, @PathVariable(name = "endDate") Date endDate) {
+        return timesheetService.findTimesheetByDate(startDate.toInstant().atOffset(ZoneOffset.UTC),endDate.toInstant().atOffset(ZoneOffset.UTC));
     }
 
 }
