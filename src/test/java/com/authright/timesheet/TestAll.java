@@ -9,6 +9,7 @@ import org.junit.runners.Suite;
         GroupServiceTest.class,
         ContractServiceTest.class,
         TimesheetServiceTest.class,
+        RoleServiceTest.class,
 })
 public class TestAll {
 }

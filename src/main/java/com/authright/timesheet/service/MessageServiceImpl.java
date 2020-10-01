@@ -1,4 +1,5 @@
 package com.authright.timesheet.service;
+
 import java.io.IOException;
 
 import com.amazonaws.regions.Regions;
@@ -12,7 +13,7 @@ import com.amazonaws.services.simpleemail.model.SendEmailRequest;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MessageServiceImpl implements MessageService{
+public class MessageServiceImpl implements MessageService {
     // Replace sender@example.com with your "From" address.
     // This address must be verified with Amazon SES.
     static final String FROM = "";
@@ -34,7 +35,7 @@ public class MessageServiceImpl implements MessageService{
     static final String TEXTBODY = "This email was sent through Amazon SES "
             + "using the AWS SDK for Java.";
 
-    public void sendEmail(String TO, String SUBJECT, String HTMLBODY, String TEXTBODY){
+    public void sendEmail(String TO, String SUBJECT, String HTMLBODY, String TEXTBODY) {
 
         try {
             AmazonSimpleEmailService client =

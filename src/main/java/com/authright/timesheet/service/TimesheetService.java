@@ -4,6 +4,8 @@ import com.authright.timesheet.model.Timesheet;
 
 public interface TimesheetService {
     Timesheet save(Timesheet timesheet);
+
     Timesheet update(Timesheet timesheet);
+
     Timesheet findTimesheetById(long timesheetId);
 }

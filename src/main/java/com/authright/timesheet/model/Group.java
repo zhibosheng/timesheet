@@ -1,4 +1,5 @@
 package com.authright.timesheet.model;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 

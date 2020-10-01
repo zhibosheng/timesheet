@@ -18,27 +18,27 @@ public class GroupController {
 
 
     @PostMapping("/group")
-    public Group save(@RequestBody Group group){
+    public Group save(@RequestBody Group group) {
         return groupService.save(group);
     }
 
     @PutMapping("/group")
-    public Group update(@RequestBody Group group){
+    public Group update(@RequestBody Group group) {
         return groupService.update(group);
     }
 
     @GetMapping("/group/{groupId}")
-    public Group findGroupById(@PathVariable(name = "groupId") long groupId){
+    public Group findGroupById(@PathVariable(name = "groupId") long groupId) {
         return groupService.findGroupById(groupId);
     }
 
     @GetMapping("/group/name/{groupName}")
-    public Group findGroupByName(@PathVariable(name = "groupName") String groupName){
+    public Group findGroupByName(@PathVariable(name = "groupName") String groupName) {
         return groupService.findGroupByName(groupName);
     }
 
     @GetMapping("/group/users/{groupId}}")
-    public List<User> findUsers(@PathVariable(name = "groupId") long groupId){
+    public List<User> findUsers(@PathVariable(name = "groupId") long groupId) {
         return groupService.findUsers(groupId);
     }
 

@@ -11,15 +11,15 @@ public class TimesheetServiceImpl implements TimesheetService {
     @Autowired
     private TimesheetRepository timesheetRepository;
 
-    public Timesheet save(Timesheet timesheet){
+    public Timesheet save(Timesheet timesheet) {
         return timesheetRepository.save(timesheet);
     }
 
-    public Timesheet update(Timesheet timesheet){
+    public Timesheet update(Timesheet timesheet) {
         return timesheetRepository.save(timesheet);
     }
 
-    public Timesheet findTimesheetById(long timesheetId){
+    public Timesheet findTimesheetById(long timesheetId) {
         return timesheetRepository.findById(timesheetId).get();
     }
 }

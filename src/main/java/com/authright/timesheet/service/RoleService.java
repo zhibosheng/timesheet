@@ -6,5 +6,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface RoleService {
-//    List<User> findUsers(long roleId);
+    List<User> findUsers(long roleId);
 }

@@ -14,17 +14,17 @@ public class TimesheetController {
     private TimesheetService timesheetService;
 
     @PostMapping("/timesheet")
-    public Timesheet save(@RequestBody Timesheet timesheet){
+    public Timesheet save(@RequestBody Timesheet timesheet) {
         return timesheetService.save(timesheet);
     }
 
     @PutMapping("/timesheet")
-    public Timesheet update(@RequestBody Timesheet timesheet){
+    public Timesheet update(@RequestBody Timesheet timesheet) {
         return timesheetService.update(timesheet);
     }
 
     @GetMapping("/timesheet/{timesheetId}")
-    public Timesheet findTimesheetById(@PathVariable(name = "timesheetId") long timesheetId){
+    public Timesheet findTimesheetById(@PathVariable(name = "timesheetId") long timesheetId) {
         return timesheetService.findTimesheetById(timesheetId);
     }
 

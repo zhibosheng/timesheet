@@ -34,8 +34,14 @@ public class ContractServiceTest {
     }
 
     @Test
-    public void findContractTimesheets(){
+    public void findContractTimesheets() {
         List<Timesheet> contractTimesheets = contractService.findContractTimesheets(1);
         Assert.assertEquals(contractTimesheets.size(), 70);
+    }
+
+    @Test
+    public void findUsers(){
+        List<User> users = contractService.findUsers(1);
+        Assert.assertEquals(users.size(), 2);
     }
 }

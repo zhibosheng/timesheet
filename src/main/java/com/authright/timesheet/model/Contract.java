@@ -29,7 +29,7 @@ public class Contract {
     private OffsetDateTime createTime;
     private OffsetDateTime updateTime;
 
-    @OneToMany(mappedBy = "contract" )
+    @OneToMany(mappedBy = "contract")
     @JsonIgnore
     private List<Timesheet> contractTimesheets = new ArrayList<>();
 

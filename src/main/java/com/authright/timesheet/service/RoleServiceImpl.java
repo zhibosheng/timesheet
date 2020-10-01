@@ -13,7 +13,7 @@ public class RoleServiceImpl implements RoleService{
     @Autowired
     RoleRepository roleRepository;
 
-//    public List<User> findUsers(long groupId){
-//        return roleRepository.findUsers(groupId);
-//    };
+    public List<User> findUsers(long groupId){
+        return roleRepository.findUsers(groupId);
+    };
 }

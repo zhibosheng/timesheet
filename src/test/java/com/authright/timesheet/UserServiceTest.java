@@ -19,55 +19,55 @@ public class UserServiceTest {
     private UserService userService;
 
     @Test
-    public void findUserById(){
+    public void findUserById() {
         User user = userService.findUserById(1);
         Assert.assertEquals(user.getUserId(), 1);
     }
 
     @Test
-    public void findUserByName(){
+    public void findUserByName() {
         User user = userService.findUserByName("chance");
         Assert.assertEquals(user.getUserId(), 1);
     }
 
     @Test
-    public void findUserByEmail(){
+    public void findUserByEmail() {
         User user = userService.findUserByEmail("liu.changsi@authright.com");
         Assert.assertEquals(user.getUserId(), 1);
     }
 
     @Test
-    public void findUserByPhone(){
+    public void findUserByPhone() {
         User user = userService.findUserByPhone("6175951256");
         Assert.assertEquals(user.getUserId(), 1);
     }
 
     @Test
-    public void findManageGroups(){
+    public void findManageGroups() {
         List<Group> manageGroups = userService.findManageGroups(6);
         Assert.assertEquals(manageGroups.size(), 1);
     }
 
     @Test
-    public void findMyTimesheets(){
+    public void findMyTimesheets() {
         List<Timesheet> myTimesheets = userService.findMyTimesheets(1);
         Assert.assertEquals(myTimesheets.size(), 28);
     }
 
     @Test
-    public void findJoinGroups(){
+    public void findJoinGroups() {
         List<Group> joinGroups = userService.findJoinGroups(1);
         Assert.assertEquals(joinGroups.size(), 1);
     }
 
     @Test
-    public void findRoles(){
+    public void findRoles() {
         List<Role> roles = userService.findRoles(6);
         Assert.assertEquals(roles.size(), 1);
     }
 
     @Test
-    public void findContracts(){
+    public void findContracts() {
         List<Contract> contracts = userService.findContracts(1);
         Assert.assertEquals(contracts.size(), 1);
     }

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 @Repository
-public interface RoleRepository extends CrudRepository<Role,Long> {
-//    @Query("SELECT u FROM User as u left join fetch u.roles as r WHERE r.roleId = :roleId")
-//    List<User> findUsers(@Param("roleId") long roleId);
+public interface RoleRepository extends CrudRepository<Role, Long> {
+    @Query("SELECT u FROM User as u left join fetch u.roles as r WHERE r.roleId = :roleId")
+    List<User> findUsers(@Param("roleId") long roleId);
 }
