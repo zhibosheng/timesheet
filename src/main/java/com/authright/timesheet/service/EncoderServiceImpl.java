@@ -1,13 +1,13 @@
 package com.authright.timesheet.service;
 
+import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import org.apache.commons.codec.binary.Base64;
-import org.springframework.stereotype.Service;
 
 @Service
-public class EncodeServiceImpl implements EncodeService {
+public class EncoderServiceImpl implements EncoderService {
     public boolean encodeExcel(){
         String filePath = "./TimeSheets.xls";
         File file = new File(filePath);
