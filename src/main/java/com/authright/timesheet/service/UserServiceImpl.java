@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -60,5 +61,13 @@ public class UserServiceImpl implements UserService{
 
     public List<Timesheet> findTimesheetByDate(long userId, OffsetDateTime startDate, OffsetDateTime endDate){
         return userRepository.findTimesheetByDate(userId, startDate,endDate);
+    };
+
+    public List<Timesheet> findTimesheetByUsersAndDate(List<Long> userIdList, OffsetDateTime startDate, OffsetDateTime endDate){
+        List<Timesheet> timesheets = new ArrayList<>();
+        for(long userId:userIdList){
+            timesheets.addAll(userRepository.findTimesheetByDate(userId,startDate,endDate));
+        }
+        return timesheets;
     };
 }

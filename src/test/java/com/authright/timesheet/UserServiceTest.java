@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -80,5 +81,15 @@ public class UserServiceTest {
         List<Timesheet> timesheets = userService.findTimesheetByDate(1,OffsetDateTime.of(LocalDateTime.of(2020,8,10,0,0,0), ZoneOffset.ofHoursMinutes(0,0)),
                 OffsetDateTime.of(LocalDateTime.of(2020,8,31,0,0,0),ZoneOffset.ofHoursMinutes(0,0)));
         Assert.assertEquals(timesheets.size(), 7);
+    }
+
+    @Test
+    public void findTimesheetByUsersAndDate(){
+        List<Long> userIdList = new ArrayList<>();
+        userIdList.add(1L);
+        userIdList.add(2L);
+        List<Timesheet> timesheets = userService.findTimesheetByUsersAndDate(userIdList,OffsetDateTime.of(LocalDateTime.of(2020,8,10,0,0,0), ZoneOffset.ofHoursMinutes(0,0)),
+                OffsetDateTime.of(LocalDateTime.of(2020,8,31,0,0,0),ZoneOffset.ofHoursMinutes(0,0)));
+        Assert.assertEquals(timesheets.size(), 28);
     }
 }

@@ -30,4 +30,6 @@ public interface UserService {
     List<Contract> findContracts(long userId);
 
     List<Timesheet> findTimesheetByDate(long userId, OffsetDateTime startDate, OffsetDateTime endDate);
+
+    List<Timesheet> findTimesheetByUsersAndDate(List<Long> userIdList, OffsetDateTime startDate, OffsetDateTime endDate);
 }
