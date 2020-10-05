@@ -18,7 +18,7 @@ public class MessageServiceTest {
     @Test
     public void sendEmail(){
         try{
-            boolean flag = messageService.sendEmail("chance93418@gmail.com","TimeSheets","TimeSheets test","TimeSheet test");
+            boolean flag = messageService.sendEmail("zhibo.sheng@authright.com","TimeSheets","TimeSheets test","TimeSheet test");
             Assert.assertEquals(flag, true);
         } catch (Exception ex){
             Assert.assertEquals(false, true);
