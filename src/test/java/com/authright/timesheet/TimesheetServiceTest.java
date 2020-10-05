@@ -24,8 +24,10 @@ public class TimesheetServiceTest {
 
     @Test
     public void findTimesheetById() {
-        Timesheet timesheet = timesheetService.findTimesheetById(125);
-        Assert.assertEquals(timesheet.getTimesheetId(), 125);
+        Timesheet timesheet = timesheetService.findTimesheetById(1l);
+        Assert.assertEquals(timesheet.getTimesheetId(), 1l);
+        Assert.assertEquals(timesheet.getUser().getUserId(), 2l);
+        Assert.assertEquals(timesheet.getNote(), "ReactJS");
     }
 
     @Test
