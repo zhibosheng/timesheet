@@ -22,15 +22,15 @@ INSERT INTO public.timesheets(
 	VALUES (1, 2, '2020-08-16', '2020-08-16 00:00:00', '2020-08-16 18:00:00', '00:00:00', '00:00:00', 'confirmed', now(), now());
 			
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 2, '2020-08-17', '2020-08-17 09:00:00', '2020-08-17 18:00:00', '00:30:00', '08:30:00', 'ReactJS week2', 'confirmed', now(), now());
 			
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 2, '2020-08-18', '2020-08-18 09:00:00', '2020-08-18 18:00:00', '00:30:00', '08:30:00', 'ReactJS week2', 'confirmed', now(), now());
 			
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 2, '2020-08-19', '2020-08-19 09:00:00', '2020-08-19 18:00:00', '00:30:00', '08:30:00', 'ReactJS week2', 'confirmed', now(), now());
 			
 INSERT INTO public.timesheets(
@@ -54,7 +54,7 @@ INSERT INTO public.timesheets(
 	VALUES (1, 2, '2020-08-24', '2020-08-24 09:00:00', '2020-08-24 18:00:00', '00:30:00', '08:30:00', 'ReactJS week3', 'confirmed', now(), now());
 
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 2, '2020-08-25', '2020-08-25 09:00:00', '2020-08-25 18:00:00', '00:30:00', '08:30:00', 'ReactJS week3', 'confirmed', now(), now());
 			
 INSERT INTO public.timesheets(
@@ -74,46 +74,46 @@ INSERT INTO public.timesheets(
 	VALUES (1, 2, '2020-08-29', '2020-08-29 00:00:00', '2020-08-29 00:00:00', '00:00:00', '00:00:00', 'confirmed', now(), now());
 			
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 2, '2020-08-30', '2020-08-30 00:00:00', '2020-08-30 00:00:00', '00:00:00', '00:00:00', 'Timesheet Project', 'confirmed', now(), now());
 			
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 2, '2020-08-31', '2020-08-31 09:00:00', '2020-08-31 18:00:00', '00:30:00', '08:30:00', 'Timesheet Project', 'confirmed', now(), now());
 	
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 1, '2020-08-24', '2020-08-24 09:00:00', '2020-08-24 18:00:00', '00:30:00', '08:30:00', 'ReactJS Week1', 'confirmed', now(), now());
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 1, '2020-08-25', '2020-08-25 09:00:00', '2020-08-25 18:00:00', '00:30:00', '08:30:00', 'ReactJS Week1', 'confirmed', now(), now());
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 1, '2020-08-26', '2020-08-26 09:00:00', '2020-08-26 18:00:00', '00:30:00', '08:30:00', 'ReactJS Week1', 'confirmed', now(), now());
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 1, '2020-08-27', '2020-08-27 09:00:00', '2020-08-27 18:00:00', '00:30:00', '08:30:00', 'ReactJS Week1', 'confirmed', now(), now());
 INSERT INTO public.timesheets(
 	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, create_time, update_time)
 	VALUES (1, 1, '2020-08-28', '2020-08-28 09:00:00', '2020-08-28 18:00:00', '00:30:00', '08:30:00', 'confirmed', now(), now());
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 1, '2020-08-29', '2020-08-29 00:00:00', '2020-08-29 0:00:00', '00:0:00', '00:00:00', 'ReactJS Week2', 'confirmed', now(), now());
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 1, '2020-08-30', '2020-08-30 00:00:00', '2020-08-30 0:00:00', '00:0:00', '00:00:00', 'ReactJS Week2', 'confirmed', now(), now());
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 1, '2020-08-31', '2020-08-31 09:00:00', '2020-08-31 18:00:00', '00:30:00', '08:30:00', 'ReactJS Week2', 'confirmed', now(), now());
 	
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 1, '2020-09-01', '2020-09-01 09:00:00', '2020-09-01 18:00:00', '00:30:00', '08:30:00', 'ReactJS week4', 'confirmed', now(), now());
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 1, '2020-09-02', '2020-09-02 09:00:00', '2020-09-02 18:00:00', '00:30:00', '08:30:00', 'ReactJS week4', 'confirmed', now(), now());
 INSERT INTO public.timesheets(
-	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, status, note, create_time, update_time)
+	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
 	VALUES (1, 1, '2020-09-03', '2020-09-03 09:00:00', '2020-09-03 18:00:00', '00:30:00', '08:30:00', 'Timesheet Project', 'confirmed', now(), now());
 INSERT INTO public.timesheets(
 	 contract_id, user_id, timesheet_date, start_time, end_time, break_deduction, total_hour, note, status, create_time, update_time)
