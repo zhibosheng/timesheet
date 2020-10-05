@@ -7,7 +7,7 @@ import java.io.FileOutputStream;
 import org.apache.commons.codec.binary.Base64;
 
 @Service
-public class EncoderServiceImpl implements EncoderService {
+public class EncodeServiceImpl implements EncodeService {
     public boolean encodeExcel(){
         String filePath = "./TimeSheets.xls";
         File file = new File(filePath);

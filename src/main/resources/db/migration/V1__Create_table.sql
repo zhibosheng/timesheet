@@ -9,7 +9,7 @@ create table "users" (
 	avatar_url   VARCHAR(255),
 	create_time  TIMESTAMP    NOT NULL,     
 	update_time  TIMESTAMP    NOT NULL,
-	PRIMARY KEY(user_id),
+	PRIMARY KEY(user_id)
 ); 
 
 create table "groups" (
@@ -19,7 +19,7 @@ create table "groups" (
 	manager_id          BIGINT,
 	create_time         TIMESTAMP    NOT NULL,     
 	update_time         TIMESTAMP    NOT NULL,
-	PRIMARY KEY(group_id),
+	PRIMARY KEY(group_id)
 ); 
 
 create table "users_groups"(
@@ -47,6 +47,7 @@ create table "timesheets"(
 	end_time         TIMESTAMP,
 	break_deduction  TIME,
 	total_hour       TIME,
+	note             VARCHAR(255),
 	status           VARCHAR(255)   NOT NULL,
 	create_time      TIMESTAMP      NOT NULL,
 	update_time      TIMESTAMP      NOT NULL,

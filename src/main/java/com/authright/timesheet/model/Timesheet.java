@@ -31,7 +31,9 @@ public class Timesheet {
     private OffsetDateTime endTime;
     private LocalTime breakDeduction;
     private LocalTime totalHour;
+    private String note;
     private String status;
+
     private OffsetDateTime createTime;
     private OffsetDateTime updateTime;
 
