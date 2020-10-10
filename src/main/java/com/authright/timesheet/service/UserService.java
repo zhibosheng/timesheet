@@ -19,6 +19,8 @@ public interface UserService {
 
     User findUserByPhone(String phone);
 
+    User findUserByCredentials(String userName, String password);
+
     List<Group> findManageGroups(long userId);
 
     List<Timesheet> findMyTimesheets(long userId);

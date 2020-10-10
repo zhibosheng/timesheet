@@ -39,6 +39,10 @@ public class UserServiceImpl implements UserService{
         return userRepository.findUserByPhone(phone).get();
     }
 
+    public User findUserByCredentials(String userName, String password){
+        return userRepository.findUserByCredentials(userName,password).get();
+    }
+
     public List<Timesheet> findMyTimesheets(long userId) {
         return userRepository.findMyTimesheets(userId);
     }

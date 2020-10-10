@@ -47,6 +47,13 @@ public class UserServiceTest {
     }
 
     @Test
+    public void findUserByCredentials() {
+        User user = userService.findUserByCredentials("chance","password");
+        Assert.assertEquals(user.getUserId(), 1);
+    }
+
+
+    @Test
     public void findManageGroups() {
         List<Group> manageGroups = userService.findManageGroups(6);
         Assert.assertEquals(manageGroups.size(), 1);

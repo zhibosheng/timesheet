@@ -6,12 +6,13 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@ServletComponentScan(basePackages = {"timesheet"})
+@ServletComponentScan(basePackages = {"com.authright.timesheet"})
 @EnableScheduling
 public class TimesheetApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(TimesheetApplication.class, args);
+
     }
 
 }
