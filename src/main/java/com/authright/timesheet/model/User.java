@@ -3,6 +3,9 @@ package com.authright.timesheet.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
@@ -11,7 +14,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-@Data
+@Getter
+@Setter
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

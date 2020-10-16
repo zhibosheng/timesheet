@@ -10,6 +10,9 @@ import org.junit.runners.Suite;
         ContractServiceTest.class,
         TimesheetServiceTest.class,
         RoleServiceTest.class,
+//        ExcelServiceTest.class,
+//        EncodeServiceTest.class,
+        FileServiceTest.class
 })
 public class TestAll {
 }

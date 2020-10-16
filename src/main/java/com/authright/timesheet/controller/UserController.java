@@ -1,11 +1,16 @@
 package com.authright.timesheet.controller;
 
 import com.authright.timesheet.model.*;
+import com.authright.timesheet.service.FileService;
+import com.authright.timesheet.service.FileServiceImpl;
+import com.authright.timesheet.service.UserService;
 import com.authright.timesheet.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.net.URL;
 import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +19,10 @@ import java.util.List;
 @RestController
 public class UserController {
     @Autowired
-    private UserServiceImpl userService;
+    private UserService userService;
+
+    @Autowired
+    private FileService fileService;
 
     @PostMapping("/user")
     public User save(@RequestBody User user) {
@@ -77,5 +85,20 @@ public class UserController {
         return userService.findContracts(userId);
     }
 
+
+    @GetMapping("/user/avatar/{userId}")
+    public URL getAvatar(@PathVariable(name = "userId") long userId){
+        User user = userService.findUserById(userId);
+        String s3Key =  user.getAvatarUrl();
+        URL url=  fileService.getObjectUrl(s3Key);
+        return url;
+    }
+
+    @PostMapping("/user/avatar")
+    public User saveAvatar(@RequestBody User user,@RequestParam("file") MultipartFile file){
+        String s3Key = fileService.putObject(file);
+        user.setAvatarUrl(s3Key);
+        return userService.save(user);
+    }
 
 }
