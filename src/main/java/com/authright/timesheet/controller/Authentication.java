@@ -7,13 +7,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.time.ZoneOffset;
+import java.util.Date;
 import java.util.HashMap;
-
+@CrossOrigin
 @RestController
 public class Authentication {
     @Autowired
@@ -57,6 +60,12 @@ public class Authentication {
 
     @PostMapping("/auth/registration")
     public User save(@RequestBody User user){
+        user.setAvatarUrl("");
+        user.setCreateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
+        user.setUpdateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
+
         return userService.save(user);
     }
 }
