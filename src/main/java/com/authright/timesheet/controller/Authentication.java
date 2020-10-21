@@ -65,7 +65,6 @@ public class Authentication {
                 .atOffset(ZoneOffset.UTC));
         user.setUpdateTime(new Date().toInstant()
                 .atOffset(ZoneOffset.UTC));
-
         return userService.save(user);
     }
 }

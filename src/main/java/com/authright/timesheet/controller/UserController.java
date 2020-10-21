@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.net.URL;
 import java.time.ZoneOffset;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 @CrossOrigin
@@ -31,6 +32,9 @@ public class UserController {
 
     @PutMapping("/user")
     public User update(@RequestBody User user) {
+        user.setCreateTime(userService.findUserById(user.getUserId()).getCreateTime());
+        user.setUpdateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
         return userService.update(user);
     }
 
@@ -87,11 +91,13 @@ public class UserController {
 
 
     @GetMapping("/user/avatar/{userId}")
-    public URL getAvatar(@PathVariable(name = "userId") long userId){
+    public HashMap getAvatar(@PathVariable(name = "userId") long userId){
+        HashMap avatarUrl = new HashMap();
         User user = userService.findUserById(userId);
         String s3Key =  user.getAvatarUrl();
         URL url=  fileService.getObjectUrl(s3Key);
-        return url;
+        avatarUrl.put("url",url);
+        return avatarUrl;
     }
 
     @PostMapping("/user/avatar")
