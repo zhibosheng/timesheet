@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -20,6 +22,9 @@ public class UserServiceImpl implements UserService{
     }
 
     public User update(User user){
+        user.setCreateTime(userRepository.findById(user.getUserId()).get().getCreateTime());
+        user.setUpdateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
         return userRepository.save(user);
     }
 
@@ -41,6 +46,16 @@ public class UserServiceImpl implements UserService{
 
     public User findUserByCredentials(String userName, String password){
         return userRepository.findUserByCredentials(userName,password).get();
+    }
+
+    public User changePassword(long userId, String oldPassword, String newPassword){
+        User user = userRepository.findById(userId).get();
+        if(oldPassword.equals(user.getPassword())){
+            user.setPassword(newPassword);
+        }
+        user.setUpdateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
+        return userRepository.save(user);
     }
 
     public List<Timesheet> findMyTimesheets(long userId) {

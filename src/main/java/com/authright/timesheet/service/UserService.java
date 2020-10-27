@@ -21,6 +21,8 @@ public interface UserService {
 
     User findUserByCredentials(String userName, String password);
 
+    User changePassword(long userId, String oldPassword, String newPassword);
+
     List<Group> findManageGroups(long userId);
 
     List<Timesheet> findMyTimesheets(long userId);

@@ -29,7 +29,7 @@ public class FileServiceImpl implements FileService{
         File f = new File(homeDir + s3Key);
         try{
             file.transferTo(f);
-            s3client.putObject(bucket,f.getName(),f);
+            s3client.putObject(bucket,s3Key,f);
         } catch (IOException e){
             e.printStackTrace();
         }

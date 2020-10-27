@@ -32,9 +32,6 @@ public class UserController {
 
     @PutMapping("/user")
     public User update(@RequestBody User user) {
-        user.setCreateTime(userService.findUserById(user.getUserId()).getCreateTime());
-        user.setUpdateTime(new Date().toInstant()
-                .atOffset(ZoneOffset.UTC));
         return userService.update(user);
     }
 
@@ -58,6 +55,11 @@ public class UserController {
         return userService.findUserByPhone(phone);
     }
 
+    @GetMapping("/user/changePassword/{userId}/{oldPassword}/{newPassword}")
+    public User changePassword(@PathVariable(name = "userId") long userId, @PathVariable(name = "oldPassword") String oldPassword, @PathVariable(name = "newPassword") String newPassword) {
+        return userService.changePassword(userId, oldPassword, newPassword);
+    }
+
     @GetMapping("/user/myTimesheet/{userId}")
     public List<Timesheet> findMyTimesheets(@PathVariable(name = "userId") long userId) {
         return userService.findMyTimesheets(userId);
@@ -70,7 +72,7 @@ public class UserController {
 
 
     @GetMapping("/user/manageGroups/{userId}")
-    public List<Group> findMangeGroups(@PathVariable(name = "userId") long userId) {
+    public List<Group> findManageGroups(@PathVariable(name = "userId") long userId) {
         return userService.findManageGroups(userId);
     }
 
@@ -100,8 +102,9 @@ public class UserController {
         return avatarUrl;
     }
 
-    @PostMapping("/user/avatar")
-    public User saveAvatar(@RequestBody User user,@RequestParam("file") MultipartFile file){
+    @PostMapping("/user/avatar/{userId}")
+    public User saveAvatar(@PathVariable(name = "userId") long userId,@RequestBody MultipartFile file){
+        User user = userService.findUserById(userId);
         String s3Key = fileService.putObject(file);
         user.setAvatarUrl(s3Key);
         return userService.save(user);
