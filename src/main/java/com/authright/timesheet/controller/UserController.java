@@ -5,6 +5,8 @@ import com.authright.timesheet.service.FileService;
 import com.authright.timesheet.service.FileServiceImpl;
 import com.authright.timesheet.service.UserService;
 import com.authright.timesheet.service.UserServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,9 @@ import java.util.List;
 @CrossOrigin
 @RestController
 public class UserController {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private UserService userService;
 
@@ -32,7 +37,26 @@ public class UserController {
 
     @PutMapping("/user")
     public User update(@RequestBody User user) {
-        return userService.update(user);
+        User tempUserInfo = userService.findUserById(user.getUserId());
+        if(!user.getUserName().equals("")) {
+            tempUserInfo.setUserName(user.getUserName());
+        }
+        if(!user.getFirstName().equals("")) {
+            tempUserInfo.setFirstName(user.getFirstName());
+        }
+        if(!user.getLastName().equals("")) {
+            tempUserInfo.setLastName(user.getLastName());
+        }
+        if(!user.getEmail().equals("")) {
+            tempUserInfo.setEmail(user.getEmail());
+        }
+        if(!user.getPhone().equals("")) {
+            tempUserInfo.setPhone(user.getPhone());
+        }
+//        if(!user.getAvatarUrl().equals("")) {
+//            tempUserInfo.setAvatarUrl(user.getAvatarUrl());
+//        }
+        return userService.update(tempUserInfo);
     }
 
     @GetMapping("/user/{userId}")

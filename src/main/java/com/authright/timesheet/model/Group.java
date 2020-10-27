@@ -18,7 +18,8 @@ public class Group {
     private String groupName;
     private String groupDescription;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "manager_id")
     private User manager;
@@ -26,7 +27,8 @@ public class Group {
     private OffsetDateTime createTime;
     private OffsetDateTime updateTime;
 
-    @ManyToMany(mappedBy = "joinGroups",fetch = FetchType.EAGER)
+
+    @ManyToMany(mappedBy = "joinGroups")
     @JsonIgnore
     private List<User> users = new ArrayList<>();
 

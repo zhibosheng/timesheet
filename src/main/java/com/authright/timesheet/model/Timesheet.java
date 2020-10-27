@@ -16,12 +16,12 @@ public class Timesheet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long timesheetId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "contract_id")
     private Contract contract;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "user_id")
     private User user;
