@@ -16,7 +16,8 @@ public class Contract {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long contractId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL,
+                fetch=FetchType.LAZY)
     @JsonIgnore
     @JoinColumn(name = "manager_id")
     private User manager;
@@ -33,7 +34,7 @@ public class Contract {
     @JsonIgnore
     private List<Timesheet> contractTimesheets = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "contracts")
+    @ManyToMany(mappedBy = "contracts", fetch=FetchType.LAZY)
     @JsonIgnore
     private List<User> users = new ArrayList<>();
 }
