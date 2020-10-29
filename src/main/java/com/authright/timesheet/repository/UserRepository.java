@@ -41,5 +41,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
     List<Contract> findContracts(@Param("userId") long userId);
 
     @Query("SELECT t FROM Timesheet as t left join fetch t.user as u WHERE u.userId = :userId and t.timesheetDate BETWEEN :startDate AND :endDate")
-    List<Timesheet> findTimesheetByDate(@Param("userId") long userId,@Param("startDate") OffsetDateTime startDate, @Param("endDate")OffsetDateTime endDate);
+    List<Timesheet> findTimesheetByDate(@Param("userId") long userId, @Param("startDate") OffsetDateTime startDate, @Param("endDate")OffsetDateTime endDate);
+
+    @Query("SELECT u FROM User u")
+    List<User> findAllUsers();
 }

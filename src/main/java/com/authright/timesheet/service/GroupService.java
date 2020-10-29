@@ -16,4 +16,8 @@ public interface GroupService {
     Group findGroupByName(String groupName);
 
     List<User> findUsers(long groupId);
+
+    Group addUser(Group group, User user);
+
+    Group deleteUser(Group group, User user);
 }

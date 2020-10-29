@@ -89,4 +89,8 @@ public class UserServiceImpl implements UserService{
         }
         return timesheets;
     };
+
+    public List<User> findAllUsers(){
+        return userRepository.findAllUsers();
+    }
 }

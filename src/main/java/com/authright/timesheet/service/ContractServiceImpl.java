@@ -9,10 +9,15 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class ContractServiceImpl implements ContractService {
+    @Autowired
+    private UserService userService;
+
     @Autowired
     private ContractRepository contractRepository;
 
@@ -42,5 +47,25 @@ public class ContractServiceImpl implements ContractService {
 
     public List<Timesheet> findTimesheetByDate(long contractId, OffsetDateTime startDate, OffsetDateTime endDate){
         return contractRepository.findTimesheetByDate(contractId, startDate,endDate);
+    };
+
+    public Contract addUser(Contract contract, User user){
+        List<Contract> contracts = user.getContracts();
+        contracts.add(contract);
+        user.setContracts(contracts);
+        contract.setUpdateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
+        userService.update(user);
+        return contractRepository.save(contract);
+    };
+
+    public Contract deleteUser(Contract contract, User user){
+        List<Contract> contracts = user.getContracts();
+        contracts.remove(contract);
+        user.setContracts(contracts);
+        contract.setUpdateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
+        userService.update(user);
+        return contractRepository.save(contract);
     };
 }

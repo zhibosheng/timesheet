@@ -5,6 +5,7 @@ import com.authright.timesheet.model.Contract;
 import com.authright.timesheet.model.Timesheet;
 import com.authright.timesheet.model.User;
 import com.authright.timesheet.service.ContractService;
+import com.authright.timesheet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,9 @@ import java.util.List;
 @CrossOrigin
 @RestController
 public class ContractController {
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private ContractService contractService;
@@ -51,6 +55,20 @@ public class ContractController {
     @GetMapping("/contract/users/{contractId}}")
     public List<User> findUsers(@PathVariable(name = "contractId") long contractId) {
         return contractService.findUsers(contractId);
+    }
+
+    @PostMapping("/contract/addUser/{contractId}/{userId}")
+    public Contract addUser(@PathVariable(name = "contractId") long contractId, @PathVariable(name = "userId") long userId){
+        User user = userService.findUserById(userId);
+        Contract contract = contractService.findContractById(contractId);
+        return contractService.addUser(contract, user);
+    }
+
+    @PostMapping("/contract/deleteUser/{groupId}/{userId}")
+    public Contract deleteUser(@PathVariable(name = "contractId") long contractId, @PathVariable(name = "userId") long userId){
+        User user = userService.findUserById(userId);
+        Contract contract = contractService.findContractById(contractId);
+        return contractService.deleteUser(contract, user);
     }
 }
 

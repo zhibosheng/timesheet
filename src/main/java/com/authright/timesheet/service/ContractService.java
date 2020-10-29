@@ -22,4 +22,8 @@ public interface ContractService {
     List<User> findUsers(long contractId);
 
     List<Timesheet> findTimesheetByDate(long contractId, OffsetDateTime startDate, OffsetDateTime endDate);
+
+    Contract addUser(Contract contract, User user);
+
+    Contract deleteUser(Contract contract, User user);
 }

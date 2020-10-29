@@ -134,4 +134,9 @@ public class UserController {
         return userService.save(user);
     }
 
+    @GetMapping("/user/allUsers")
+    public List<User> findAllUsers() {
+        return userService.findAllUsers();
+    }
+
 }
