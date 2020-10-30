@@ -105,12 +105,18 @@ public class UserController {
         return userService.findJoinGroups(userId);
     }
 
-    @GetMapping("/user/findRoles/{userId}")
+    @GetMapping("/user/roles/{userId}")
     public List<Role> findRoles(@PathVariable(name = "userId") long userId) {
         return userService.findRoles(userId);
     }
 
-    @GetMapping("/user/findContracts/{userId}")
+    @GetMapping("/user/manageContracts/{userId}")
+    public List<Contract> findManageContracts(@PathVariable(name = "userId") long userId) {
+        return userService.findManageContracts(userId);
+    }
+
+
+    @GetMapping("/user/contracts/{userId}")
     public List<Contract> findContracts(@PathVariable(name = "userId") long userId) {
         return userService.findContracts(userId);
     }

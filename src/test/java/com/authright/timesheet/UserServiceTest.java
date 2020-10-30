@@ -78,6 +78,12 @@ public class UserServiceTest {
     }
 
     @Test
+    public void findManageContracts() {
+        List<Contract> contracts = userService.findManageContracts(6);
+        Assert.assertEquals(contracts.size(), 1);
+    }
+
+    @Test
     public void findContracts() {
         List<Contract> contracts = userService.findContracts(1);
         Assert.assertEquals(contracts.size(), 1);

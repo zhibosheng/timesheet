@@ -37,6 +37,9 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Query("SELECT r FROM Role as r left join fetch r.users as u WHERE u.userId = :userId")
     List<Role> findRoles(@Param("userId") long userId);
 
+    @Query("SELECT c FROM Contract as c left join fetch c.manager as u WHERE u.userId = :userId")
+    List<Contract> findManageContracts(@Param("userId") long userId);
+
     @Query("SELECT c FROM Contract as c left join fetch c.users as u WHERE u.userId = :userId")
     List<Contract> findContracts(@Param("userId") long userId);
 

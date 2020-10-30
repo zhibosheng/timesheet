@@ -74,6 +74,10 @@ public class UserServiceImpl implements UserService{
         return userRepository.findRoles(userId);
     }
 
+    public List<Contract> findManageContracts(long userId) {
+        return userRepository.findManageContracts(userId);
+    }
+
     public List<Contract> findContracts(long userId) {
         return userRepository.findContracts(userId);
     }

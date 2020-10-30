@@ -31,6 +31,8 @@ public interface UserService {
 
     List<Role> findRoles(long userId);
 
+    List<Contract> findManageContracts(long userId);
+
     List<Contract> findContracts(long userId);
 
     List<Timesheet> findTimesheetByDate(long userId, OffsetDateTime startDate, OffsetDateTime endDate);
