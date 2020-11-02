@@ -64,6 +64,15 @@ public class ContractController {
         return contractService.addUser(contract, user);
     }
 
+    @PostMapping("/contract/addUserByName/{contractId}/{userName}")
+    public List<User> addUserByName(@PathVariable(name = "contractId") long contractId, @PathVariable(name = "userName") String userName){
+        User user = userService.findUserByName(userName);
+        Contract contract = contractService.findContractById(contractId);
+        contractService.addUser(contract, user);
+        return contractService.findUsers(contractId);
+    }
+
+
     @PostMapping("/contract/deleteUser/{groupId}/{userId}")
     public Contract deleteUser(@PathVariable(name = "contractId") long contractId, @PathVariable(name = "userId") long userId){
         User user = userService.findUserById(userId);
