@@ -105,4 +105,11 @@ public class UserServiceTest {
                 OffsetDateTime.of(LocalDateTime.of(2020,8,31,0,0,0),ZoneOffset.ofHoursMinutes(0,0)));
         Assert.assertEquals(timesheets.size(), 28);
     }
+
+    @Test
+    public void findAllUsers(){
+        List<User> users = userService.findAllUsers();
+        Assert.assertEquals(users.size(), 7);
+    }
+
 }

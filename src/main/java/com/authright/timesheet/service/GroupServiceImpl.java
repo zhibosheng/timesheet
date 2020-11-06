@@ -26,6 +26,9 @@ public class GroupServiceImpl implements GroupService {
     }
 
     public Group update(Group group) {
+        group.setCreateTime(groupRepository.findById(group.getGroupId()).get().getCreateTime());
+        group.setUpdateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
         return groupRepository.save(group);
     }
 
@@ -60,4 +63,8 @@ public class GroupServiceImpl implements GroupService {
         userService.update(user);
         return groupRepository.save(group);
     }
+
+    public List<Group> findAllGroups(){
+        return groupRepository.findAllGroups();
+    };
 }

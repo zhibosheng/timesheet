@@ -23,4 +23,7 @@ public interface ContractRepository extends CrudRepository<Contract, Long> {
 
     @Query("SELECT t FROM Timesheet as t  left join fetch t.contract as c WHERE c.contractId = :contractId and t.timesheetDate BETWEEN :startDate AND :endDate")
     List<Timesheet> findTimesheetByDate(@Param("contractId") long contractId, @Param("startDate") OffsetDateTime startDate, @Param("endDate")OffsetDateTime endDate);
+
+    @Query("SELECT c FROM Contract c")
+    List<Contract> findAllContracts();
 }

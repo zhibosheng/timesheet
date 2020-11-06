@@ -18,4 +18,7 @@ public interface GroupRepository extends CrudRepository<Group, Long> {
 
     @Query("SELECT u FROM User as u left join fetch u.joinGroups as g WHERE g.groupId = :groupId")
     List<User> findUsers(@Param("groupId") long groupId);
+
+    @Query("SELECT g FROM Group g")
+    List<Group> findAllGroups();
 }

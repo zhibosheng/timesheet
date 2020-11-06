@@ -2,6 +2,7 @@ package com.authright.timesheet;
 
 
 import com.authright.timesheet.model.Contract;
+import com.authright.timesheet.model.Group;
 import com.authright.timesheet.model.Timesheet;
 import com.authright.timesheet.model.User;
 import com.authright.timesheet.service.ContractService;
@@ -53,5 +54,11 @@ public class ContractServiceTest {
         List<Timesheet> timesheets = contractService.findTimesheetByDate(1, OffsetDateTime.of(LocalDateTime.of(2020,8,10,0,0,0), ZoneOffset.ofHoursMinutes(0,0)),
                 OffsetDateTime.of(LocalDateTime.of(2020,8,31,0,0,0),ZoneOffset.ofHoursMinutes(0,0)));
         Assert.assertEquals(timesheets.size(), 28);
+    }
+
+    @Test
+    public void findAllContracts(){
+        List<Contract> contracts = contractService.findAllContracts();
+        Assert.assertEquals(contracts.size(),1);
     }
 }

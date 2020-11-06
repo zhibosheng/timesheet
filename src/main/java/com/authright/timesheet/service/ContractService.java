@@ -26,4 +26,6 @@ public interface ContractService {
     Contract addUser(Contract contract, User user);
 
     Contract deleteUser(Contract contract, User user);
+
+    List<Contract> findAllContracts();
 }

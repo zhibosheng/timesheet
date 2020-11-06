@@ -26,6 +26,9 @@ public class ContractServiceImpl implements ContractService {
     }
 
     public Contract update(Contract contract) {
+        contract.setCreateTime(contractRepository.findById(contract.getContractId()).get().getCreateTime());
+        contract.setUpdateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
         return contractRepository.save(contract);
     }
 
@@ -67,5 +70,9 @@ public class ContractServiceImpl implements ContractService {
                 .atOffset(ZoneOffset.UTC));
         userService.update(user);
         return contractRepository.save(contract);
+    };
+
+    public List<Contract> findAllContracts(){
+        return contractRepository.findAllContracts();
     };
 }

@@ -20,4 +20,6 @@ public interface GroupService {
     Group addUser(Group group, User user);
 
     Group deleteUser(Group group, User user);
+
+    List<Group> findAllGroups();
 }

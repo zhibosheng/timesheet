@@ -38,4 +38,11 @@ public class GroupServiceTest {
         List<User> users = groupService.findUsers(1);
         Assert.assertEquals(users.size(), 2);
     }
+
+    @Test
+    public void findAllGroups(){
+        List<Group> groups = groupService.findAllGroups();
+        Assert.assertEquals(groups.size(),1);
+    }
+
 }

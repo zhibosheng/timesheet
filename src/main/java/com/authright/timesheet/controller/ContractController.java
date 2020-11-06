@@ -29,7 +29,14 @@ public class ContractController {
 
     @PutMapping("/contract")
     public Contract update(@RequestBody Contract contract) {
-        return contractService.update(contract);
+        Contract tempContractInfo = contractService.findContractById(contract.getContractId());
+        if(!tempContractInfo.getContractName().equals("")){
+            tempContractInfo.setContractName(contract.getContractName());
+        }
+        if(!tempContractInfo.getCompany().equals("")){
+            tempContractInfo.setCompany(contract.getCompany());
+        }
+        return contractService.update(tempContractInfo);
     }
 
     @GetMapping("/contract/{contractId}")
@@ -52,7 +59,7 @@ public class ContractController {
         return contractService.findTimesheetByDate(contractId, startDate.toInstant().atOffset(ZoneOffset.UTC),  endDate.toInstant().atOffset(ZoneOffset.UTC));
     }
 
-    @GetMapping("/contract/users/{contractId}}")
+    @GetMapping("/contract/users/{contractId}")
     public List<User> findUsers(@PathVariable(name = "contractId") long contractId) {
         return contractService.findUsers(contractId);
     }
@@ -73,11 +80,17 @@ public class ContractController {
     }
 
 
-    @PostMapping("/contract/deleteUser/{groupId}/{userId}")
-    public Contract deleteUser(@PathVariable(name = "contractId") long contractId, @PathVariable(name = "userId") long userId){
+    @PostMapping("/contract/deleteUser/{contractId}/{userId}")
+    public List<User> deleteUser(@PathVariable(name = "contractId") long contractId, @PathVariable(name = "userId") long userId){
         User user = userService.findUserById(userId);
         Contract contract = contractService.findContractById(contractId);
-        return contractService.deleteUser(contract, user);
+        contractService.deleteUser(contract, user);
+        return contractService.findUsers(contractId);
+    }
+
+    @GetMapping("/contract/allContracts")
+    public List<Contract> findAllContracts() {
+        return contractService.findAllContracts();
     }
 }
 

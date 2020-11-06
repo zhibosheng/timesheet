@@ -28,7 +28,14 @@ public class GroupController {
 
     @PutMapping("/group")
     public Group update(@RequestBody Group group) {
-        return groupService.update(group);
+        Group tempGroupInfo = groupService.findGroupById(group.getGroupId());
+        if(!group.getGroupName().equals("")){
+            tempGroupInfo.setGroupName(group.getGroupName());
+        }
+        if(!group.getGroupDescription().equals("")){
+            tempGroupInfo.setGroupDescription(group.getGroupDescription());
+        }
+        return groupService.update(tempGroupInfo);
     }
 
     @GetMapping("/group/{groupId}")
@@ -70,5 +77,8 @@ public class GroupController {
         return groupService.findUsers(groupId);
     }
 
-
+    @GetMapping("/group/allGroups")
+    public List<Group> findAllGroups(){
+        return groupService.findAllGroups();
+    };
 }
