@@ -27,6 +27,16 @@ public class ContractController {
         return contractService.save(contract);
     }
 
+    @PostMapping("/createContract/{contractName}/{company}/{managerName}")
+    public Contract createContract(@PathVariable(name = "contractName") String contractName, @PathVariable(name = "company") String company,  @PathVariable(name = "managerName") String managerName) {
+        Contract contract = new Contract();
+        contract.setContractName(contractName);
+        contract.setCompany(company);
+        User user = userService.findUserByName(managerName);
+        contract.setManager(user);
+        return contractService.save(contract);
+    }
+
     @PutMapping("/contract")
     public Contract update(@RequestBody Contract contract) {
         Contract tempContractInfo = contractService.findContractById(contract.getContractId());
@@ -35,6 +45,12 @@ public class ContractController {
         }
         if(!tempContractInfo.getCompany().equals("")){
             tempContractInfo.setCompany(contract.getCompany());
+        }
+        if(!tempContractInfo.getStartDate().equals("")){
+            tempContractInfo.setStartDate(contract.getStartDate());
+        }
+        if(!tempContractInfo.getEndDate().equals("")){
+            tempContractInfo.setEndDate(contract.getEndDate());
         }
         return contractService.update(tempContractInfo);
     }

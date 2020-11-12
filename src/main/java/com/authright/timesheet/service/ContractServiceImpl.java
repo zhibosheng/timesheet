@@ -22,6 +22,10 @@ public class ContractServiceImpl implements ContractService {
     private ContractRepository contractRepository;
 
     public Contract save(Contract contract) {
+        contract.setCreateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
+        contract.setUpdateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
         return contractRepository.save(contract);
     }
 

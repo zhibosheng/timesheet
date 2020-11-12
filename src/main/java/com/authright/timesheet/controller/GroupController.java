@@ -26,6 +26,16 @@ public class GroupController {
         return groupService.save(group);
     }
 
+    @PostMapping("/createGroup/{groupName}/{groupDescription}/{managerName}")
+    public Group createGroup(@PathVariable(name = "groupName") String groupName, @PathVariable(name = "groupDescription") String groupDescription,  @PathVariable(name = "managerName") String managerName) {
+        Group group = new Group();
+        group.setGroupName(groupName);
+        group.setGroupDescription(groupDescription);
+        User user = userService.findUserByName(managerName);
+        group.setManager(user);
+        return groupService.save(group);
+    }
+
     @PutMapping("/group")
     public Group update(@RequestBody Group group) {
         Group tempGroupInfo = groupService.findGroupById(group.getGroupId());
@@ -34,6 +44,9 @@ public class GroupController {
         }
         if(!group.getGroupDescription().equals("")){
             tempGroupInfo.setGroupDescription(group.getGroupDescription());
+        }
+        if(!group.getManager().equals("")){
+            tempGroupInfo.setManager(userService.findUserByName(group.getManager().getUserName()));
         }
         return groupService.update(tempGroupInfo);
     }

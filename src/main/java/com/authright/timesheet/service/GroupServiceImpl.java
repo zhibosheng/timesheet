@@ -22,6 +22,10 @@ public class GroupServiceImpl implements GroupService {
     private GroupRepository groupRepository;
 
     public Group save(Group group) {
+        group.setCreateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
+        group.setUpdateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
         return groupRepository.save(group);
     }
 

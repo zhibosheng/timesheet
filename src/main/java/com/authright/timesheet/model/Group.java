@@ -20,7 +20,6 @@ public class Group {
 
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "manager_id")
     private User manager;
 

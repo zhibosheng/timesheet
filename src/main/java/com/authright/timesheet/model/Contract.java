@@ -18,7 +18,6 @@ public class Contract {
 
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "manager_id")
     private User manager;
 

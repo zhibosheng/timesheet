@@ -18,6 +18,10 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
 
     public User save(User user){
+        user.setCreateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
+        user.setUpdateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
         return userRepository.save(user);
     }
 

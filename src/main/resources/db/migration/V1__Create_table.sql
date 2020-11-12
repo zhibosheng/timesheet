@@ -16,7 +16,7 @@ create table "groups" (
 	group_id            BIGSERIAL    NOT NULL,
 	group_name          VARCHAR(255) NOT NULL UNIQUE,
 	group_description   VARCHAR(255) NOT NULL,
-	manager_id          BIGINT,
+	manager_id          BIGINT       NOT NULL,
 	create_time         TIMESTAMP    NOT NULL,     
 	update_time         TIMESTAMP    NOT NULL,
 	PRIMARY KEY(group_id)
