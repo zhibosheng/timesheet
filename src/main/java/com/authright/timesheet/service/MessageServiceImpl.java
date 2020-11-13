@@ -74,7 +74,7 @@ public class MessageServiceImpl implements MessageService {
 //            + "</body>"
 //            + "</html>";
 
-    public boolean sendEmail(String RECIPIENT, String SUBJECT, String BODY_HTML, String BODY_TEXT) throws MessagingException{
+    public boolean sendEmail(String RECIPIENT, String SUBJECT, String BODY_HTML, String BODY_TEXT) throws MessagingException {
         Session session = Session.getDefaultInstance(new Properties());
 
         // Create a new MimeMessage object.

@@ -37,4 +37,14 @@ public class TimesheetController {
         return timesheetService.findTimesheetByDate(startDate.toInstant().atOffset(ZoneOffset.UTC),endDate.toInstant().atOffset(ZoneOffset.UTC));
     }
 
+    @GetMapping("/timesheet/users/{startDate}/{endDate}")
+    public List<Timesheet> findTimesheetByUsersAndDate(@RequestBody List<Long> userIdList, @PathVariable(name = "startDate") Date startDate, @PathVariable(name = "endDate") Date endDate) {
+        return timesheetService.findTimesheetByUsersAndDate(userIdList,startDate.toInstant().atOffset(ZoneOffset.UTC),endDate.toInstant().atOffset(ZoneOffset.UTC));
+    }
+
+    @GetMapping("/timesheet/sendEmail/{email}/{startDate}/{endDate}")
+    public List<Timesheet> sendTimesheetEmail(@RequestBody List<Long> userIdList, @PathVariable(name = "email") String email, @PathVariable(name = "startDate") Date startDate, @PathVariable(name = "endDate") Date endDate) {
+        return timesheetService.sendTimesheetEmail(userIdList,email, startDate.toInstant().atOffset(ZoneOffset.UTC),endDate.toInstant().atOffset(ZoneOffset.UTC));
+    }
+
 }

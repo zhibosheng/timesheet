@@ -96,15 +96,6 @@ public class UserServiceTest {
         Assert.assertEquals(timesheets.size(), 7);
     }
 
-    @Test
-    public void findTimesheetByUsersAndDate(){
-        List<Long> userIdList = new ArrayList<>();
-        userIdList.add(1L);
-        userIdList.add(2L);
-        List<Timesheet> timesheets = userService.findTimesheetByUsersAndDate(userIdList,OffsetDateTime.of(LocalDateTime.of(2020,8,10,0,0,0), ZoneOffset.ofHoursMinutes(0,0)),
-                OffsetDateTime.of(LocalDateTime.of(2020,8,31,0,0,0),ZoneOffset.ofHoursMinutes(0,0)));
-        Assert.assertEquals(timesheets.size(), 28);
-    }
 
     @Test
     public void findAllUsers(){

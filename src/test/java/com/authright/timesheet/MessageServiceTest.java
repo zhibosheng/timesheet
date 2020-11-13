@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = TimesheetApplication.class)
 public class MessageServiceTest {
     @Autowired
-    private MessageServiceImpl messageService;
+    private MessageService messageService;
 
     @Test
     public void sendEmail(){

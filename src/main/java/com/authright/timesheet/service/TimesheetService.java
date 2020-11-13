@@ -15,4 +15,8 @@ public interface TimesheetService {
     Timesheet findTimesheetById(long timesheetId);
 
     List<Timesheet> findTimesheetByDate(OffsetDateTime startDate, OffsetDateTime endDate);
+
+    List<Timesheet> findTimesheetByUsersAndDate(List<Long> userIdList, OffsetDateTime startDate, OffsetDateTime endDate);
+
+    List<Timesheet> sendTimesheetEmail(List<Long> userIdList, String email, OffsetDateTime startDate, OffsetDateTime endDate);
 }

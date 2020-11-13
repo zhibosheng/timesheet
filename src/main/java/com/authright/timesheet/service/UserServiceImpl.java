@@ -90,14 +90,6 @@ public class UserServiceImpl implements UserService{
         return userRepository.findTimesheetByDate(userId, startDate,endDate);
     };
 
-    public List<Timesheet> findTimesheetByUsersAndDate(List<Long> userIdList, OffsetDateTime startDate, OffsetDateTime endDate){
-        List<Timesheet> timesheets = new ArrayList<>();
-        for(long userId:userIdList){
-            timesheets.addAll(userRepository.findTimesheetByDate(userId,startDate,endDate));
-        }
-        return timesheets;
-    };
-
     public List<User> findAllUsers(){
         return userRepository.findAllUsers();
     }

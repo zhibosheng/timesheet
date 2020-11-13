@@ -89,10 +89,11 @@ public class UserController {
         return userService.findMyTimesheets(userId);
     }
 
-    @GetMapping("/user/myTimesheet/{userId}/{startDate}/endDate")
+    @GetMapping("/user/myTimesheet/{userId}/{startDate}/{endDate}")
     public List<Timesheet> findTimesheetsByDate(@PathVariable(name = "userId") long userId, @PathVariable(name = "startDate") Date startDate, @PathVariable(name = "endDate") Date endDate) {
         return userService.findTimesheetByDate(userId, startDate.toInstant().atOffset(ZoneOffset.UTC),  endDate.toInstant().atOffset(ZoneOffset.UTC));
     }
+
 
 
     @GetMapping("/user/manageGroups/{userId}")
