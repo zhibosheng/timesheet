@@ -1,7 +1,9 @@
 package com.authright.timesheet.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.Duration;
@@ -17,17 +19,17 @@ public class Timesheet {
     private long timesheetId;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "contract_id")
     private Contract contract;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "user_id")
     private User user;
 
     private OffsetDateTime timesheetDate;
+
     private OffsetDateTime startTime;
+
     private OffsetDateTime endTime;
     private LocalTime breakDeduction;
     private LocalTime totalHour;

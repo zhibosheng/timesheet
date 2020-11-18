@@ -4,15 +4,22 @@ package com.authright.timesheet.controller;
 import com.authright.timesheet.model.Timesheet;
 import com.authright.timesheet.model.User;
 import com.authright.timesheet.service.TimesheetService;
+import com.authright.timesheet.service.UserService;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 @CrossOrigin
 @RestController
 public class TimesheetController {
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private TimesheetService timesheetService;
@@ -37,13 +44,24 @@ public class TimesheetController {
         return timesheetService.findTimesheetByDate(startDate.toInstant().atOffset(ZoneOffset.UTC),endDate.toInstant().atOffset(ZoneOffset.UTC));
     }
 
-    @GetMapping("/timesheet/users/{startDate}/{endDate}")
-    public List<Timesheet> findTimesheetByUsersAndDate(@RequestBody List<Long> userIdList, @PathVariable(name = "startDate") Date startDate, @PathVariable(name = "endDate") Date endDate) {
+    @GetMapping("/timesheet/users")
+    public List<Timesheet> findTimesheetByUsersAndDate(@RequestParam List<String> userNameList, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")  Date startDate, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") Date endDate) {
+        List<Long> userIdList = new ArrayList<>();
+        for(String userName: userNameList){
+            User user = userService.findUserByName(userName);
+            userIdList.add(user.getUserId());
+        }
         return timesheetService.findTimesheetByUsersAndDate(userIdList,startDate.toInstant().atOffset(ZoneOffset.UTC),endDate.toInstant().atOffset(ZoneOffset.UTC));
+
     }
 
-    @GetMapping("/timesheet/sendEmail/{email}/{startDate}/{endDate}")
-    public List<Timesheet> sendTimesheetEmail(@RequestBody List<Long> userIdList, @PathVariable(name = "email") String email, @PathVariable(name = "startDate") Date startDate, @PathVariable(name = "endDate") Date endDate) {
+    @GetMapping("/timesheet/sendEmail")
+    public List<Timesheet> sendTimesheetEmail(@RequestParam List<String> userNameList, @RequestParam String email, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") Date startDate, @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") Date endDate) {
+        List<Long> userIdList = new ArrayList<>();
+        for(String userName: userNameList){
+            User user = userService.findUserByName(userName);
+            userIdList.add(user.getUserId());
+        }
         return timesheetService.sendTimesheetEmail(userIdList,email, startDate.toInstant().atOffset(ZoneOffset.UTC),endDate.toInstant().atOffset(ZoneOffset.UTC));
     }
 
