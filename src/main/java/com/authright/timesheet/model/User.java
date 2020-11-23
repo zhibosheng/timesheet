@@ -2,6 +2,7 @@ package com.authright.timesheet.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.Setter;
 import lombok.ToString;
@@ -38,6 +39,7 @@ public class User {
     @OneToMany(mappedBy = "manager")
     @JsonIgnore
     private List<Contract> manageContracts = new ArrayList<>();
+
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore

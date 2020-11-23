@@ -15,15 +15,15 @@ public interface ContractRepository extends CrudRepository<Contract, Long> {
     @Query("SELECT c FROM Contract c WHERE c.contractName=:contractName")
     Optional<Contract> findContractByName(@Param("contractName") String contractName);
 
-    @Query("SELECT t FROM Timesheet as t left join fetch t.contract as c WHERE c.contractId = :contractId")
+    @Query("SELECT t FROM Timesheet as t left join fetch t.contract as c WHERE c.contractId = :contractId order by t.timesheetId")
     List<Timesheet> findContractTimesheets(@Param("contractId") long contractId);
 
-    @Query("SELECT u FROM User as u left join fetch u.contracts as c WHERE c.contractId = :contractId")
+    @Query("SELECT u FROM User as u left join fetch u.contracts as c WHERE c.contractId = :contractId order by u.userId")
     List<User> findUsers(@Param("contractId") long contractId);
 
-    @Query("SELECT t FROM Timesheet as t  left join fetch t.contract as c WHERE c.contractId = :contractId and t.timesheetDate BETWEEN :startDate AND :endDate")
+    @Query("SELECT t FROM Timesheet as t  left join fetch t.contract as c WHERE c.contractId = :contractId and t.timesheetDate BETWEEN :startDate AND :endDate order by t.timesheetId")
     List<Timesheet> findTimesheetByDate(@Param("contractId") long contractId, @Param("startDate") OffsetDateTime startDate, @Param("endDate")OffsetDateTime endDate);
 
-    @Query("SELECT c FROM Contract c")
+    @Query("SELECT c FROM Contract c order by c.contractId")
     List<Contract> findAllContracts();
 }

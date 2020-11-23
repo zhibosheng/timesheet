@@ -19,3 +19,5 @@ VALUES ('le', 'Deng', 'Le', 'password', 'le.deng@authright.com', '9293313520', n
 INSERT INTO users(user_name, first_name, last_name, password, email, phone, create_time, update_time)
 VALUES ('jiayi', 'Jiayi', 'Cai', 'password', 'jiayi.cai@authright.com', '6177857902', now(), now());
 
+INSERT INTO users(user_name, first_name, last_name, password, email, phone, create_time, update_time)
+VALUES ('admin', 'admin', 'admin', 'password', '', '', now(), now());

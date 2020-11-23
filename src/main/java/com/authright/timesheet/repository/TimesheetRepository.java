@@ -14,7 +14,7 @@ import java.util.List;
 
 @Repository
 public interface TimesheetRepository extends CrudRepository<Timesheet, Long> {
-    @Query("SELECT t FROM Timesheet as t WHERE  t.timesheetDate BETWEEN :startDate AND :endDate")
+    @Query("SELECT t FROM Timesheet as t WHERE  t.timesheetDate BETWEEN :startDate AND :endDate order by t.timesheetId")
     List<Timesheet> findTimesheetByDate(@Param("startDate")OffsetDateTime startDate, @Param("endDate")OffsetDateTime endDate);
 
 }

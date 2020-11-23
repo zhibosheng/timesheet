@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,6 +36,9 @@ public class TimesheetServiceImpl implements TimesheetService {
     }
 
     public Timesheet update(Timesheet timesheet) {
+        timesheet.setCreateTime(timesheetRepository.findById(timesheet.getTimesheetId()).get().getCreateTime());
+        timesheet.setUpdateTime(new Date().toInstant()
+                .atOffset(ZoneOffset.UTC));
         return timesheetRepository.save(timesheet);
     }
 

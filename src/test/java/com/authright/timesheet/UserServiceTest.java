@@ -100,7 +100,7 @@ public class UserServiceTest {
     @Test
     public void findAllUsers(){
         List<User> users = userService.findAllUsers();
-        Assert.assertEquals(users.size(), 7);
+        Assert.assertEquals(users.size(), 8);
     }
 
 }
